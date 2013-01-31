@@ -19,4 +19,8 @@ class PagesController < ApplicationController
   def help
     @title = "Help"
   end
+
+  def loadtimes
+    @title = "Load Times"
+  end
 end
