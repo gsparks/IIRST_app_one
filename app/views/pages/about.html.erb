@@ -5,6 +5,4 @@
   with <a href="http://rubyonrails.org/">Ruby on Rails</a>. This
   is the sample application for the tutorial.
 </p>
-<%= "Took #{Time.now - @start_time_in_controller} seconds to load." %>
-<%= p = Loadtime.new(:loadtime => (Time.now - @start_time_in_controller), :page => "about", :date => Time.now) %>
-<%= p.save %>
+<%= "took #{Time.now - @start_time_in_controller} seconds" %>

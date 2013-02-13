@@ -24,6 +24,3 @@
 <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
 
 <% end %>
-<%= "Took #{Time.now - @start_time_in_controller} seconds to load." %>
-<%= p = Loadtime.new(:loadtime => (Time.now - @start_time_in_controller), :page => "home", :date => Time.now) %>
-<%= p.save %>

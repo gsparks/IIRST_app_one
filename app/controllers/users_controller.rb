@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    @start_time_in_controller = Time.now
     @user  = User.new
     @title = "Sign up"
   end
