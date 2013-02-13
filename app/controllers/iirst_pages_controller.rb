@@ -1,2 +1,0 @@
-class IirstPagesController < ApplicationController
-end
