@@ -1,0 +1,27 @@
+<h1>Listing loadtimes</h1>
+
+<table>
+  <tr>
+    <th>Loadtime</th>
+    <th>Page</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @loadtimes.each do |loadtime| %>
+  <tr>
+    <td><%= loadtime.loadtime %></td>
+    <td><%= loadtime.page %></td>
+    <td><%= loadtime.date %></td>
+    <td><%= link_to 'Show', loadtime %></td>
+    <td><%= link_to 'Edit', edit_loadtime_path(loadtime) %></td>
+    <td><%= link_to 'Destroy', loadtime, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Loadtime', new_loadtime_path %>

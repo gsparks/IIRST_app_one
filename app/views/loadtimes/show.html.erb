@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Loadtime:</b>
+  <%= @loadtime.loadtime %>
+</p>
+
+<p>
+  <b>Page:</b>
+  <%= @loadtime.page %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @loadtime.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_loadtime_path(@loadtime) %> |
+<%= link_to 'Back', loadtimes_path %>

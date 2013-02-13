@@ -1,0 +1,29 @@
+<%= form_for(@loadtime) do |f| %>
+  <% if @loadtime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@loadtime.errors.count, "error") %> prohibited this loadtime from being saved:</h2>
+
+      <ul>
+      <% @loadtime.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :loadtime %><br />
+    <%= f.text_field :loadtime %>
+  </div>
+  <div class="field">
+    <%= f.label :page %><br />
+    <%= f.text_field :page %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.text_field :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
