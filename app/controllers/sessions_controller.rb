@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @start_time_in_controller = Time.now
     @title = "Sign in"
   end
   

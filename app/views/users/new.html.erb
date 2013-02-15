@@ -7,3 +7,6 @@
     <%= f.submit "Sign up" %>
   </div>  
 <% end %>
+<%= "Took #{Time.now - @start_time_in_controller} seconds to load." %>
+<%= p = Loadtime.new(:loadtime => (Time.now - @start_time_in_controller), :page => "about", :date => Time.now) %>
+<%= p.save %>

@@ -5,3 +5,6 @@
   To get help on this sample app, see the
   <a href="http://railstutorial.org/book">Rails Tutorial book</a>.
 </p>
+<%= "Took #{Time.now - @start_time_in_controller} seconds to load." %>
+<%= p = Loadtime.new(:loadtime => (Time.now - @start_time_in_controller), :page => "help", :date => Time.now) %>
+<%= p.save %>
