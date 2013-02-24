@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :networks
+
   resources :loadtimes
 
   resources :users do

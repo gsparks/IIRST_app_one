@@ -38,5 +38,10 @@ module SampleApp
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Network Variables
+    $latency = 0
+    $jitter = 'f'
+
   end
 end

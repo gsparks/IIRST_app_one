@@ -3,10 +3,10 @@
 This is the sample application for [*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/) by [Michael Hartl](http://michaelhartl.com/).
 
 #################################################################
-Instructions for installing IIRST
+# Instructions for installing IIRST
 #################################################################
 
-Section I => Installing the loadtime functionality
+# Section I => Installing the loadtime functionality
 
 1.  $ rails generate scaffold Loadtime loadtime:float page:string date:string
 
@@ -50,3 +50,26 @@ Section I => Installing the loadtime functionality
 	end
 	
 11. Restart the server and use the app.  There should now be a profiling box in the upper left-hand corner.
+
+# Section II => Installing the network functionality
+
+1.  $ rails generate scaffold Network latency:integer jitter:string date:string
+
+2.  Make sure network.rb located in app/models/network.rb looks like…
+
+	class Network < ActiveRecord::Base
+		attr_accessible :latency, :jitter, :date
+		validates :latency, :presence => true
+   		validates :jitter, :presence => true
+   		validates :date, :presence => true
+	end
+
+3.  $ rake db:migrate
+
+4.  Navigate to localhost:3000/networks.  A page should exist that attempts to list network changes.
+
+5.  Place this code in application.rb within the config folder…
+
+	# Network Variables
+    	$latency = 0
+    	$jitter = 'f'
