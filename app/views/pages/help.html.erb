@@ -1,3 +1,8 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
 <h1>Help</h1>
 <p>
   Get help on Ruby on Rails Tutorial at the

@@ -1,8 +1,9 @@
 class NetworksController < ApplicationController
+
   # GET /networks
   # GET /networks.xml
   def index
-    @networks = Network.all
+	 @networks = Network.all
 
     respond_to do |format|
       format.html # index.html.erb

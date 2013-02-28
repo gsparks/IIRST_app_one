@@ -1,4 +1,16 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
 <h1>Listing loadtimes</h1>
+
+<% x = 0 %>
+<% @loadtimes.each do |loadtime| %>
+  <% x = x + loadtime.loadtime %>
+<% end %>
+<% x = x / @loadtimes.size %>
+<h4> Average total loadtime: <%= x %> seconds </h4>
 
 <table>
   <tr>
@@ -10,14 +22,11 @@
     <th></th>
   </tr>
 
-<% @loadtimes.each do |loadtime| %>
+<% Loadtime.find(:all, :order => "id desc", :limit => 50).each do |loadtime| %>
   <tr>
     <td><%= loadtime.loadtime %></td>
     <td><%= loadtime.page %></td>
     <td><%= loadtime.date %></td>
-    <td><%= link_to 'Show', loadtime %></td>
-    <td><%= link_to 'Edit', edit_loadtime_path(loadtime) %></td>
-    <td><%= link_to 'Destroy', loadtime, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

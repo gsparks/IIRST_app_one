@@ -1,3 +1,8 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
 <tr>
   <td class="gravatar">
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>

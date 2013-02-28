@@ -1,3 +1,8 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
 <% if signed_in? %>
 
   <table class="front" summary="For signed-in users">
@@ -27,3 +32,4 @@
 <%= "Took #{Time.now - @start_time_in_controller} seconds to load." %>
 <%= p = Loadtime.new(:loadtime => (Time.now - @start_time_in_controller), :page => "home", :date => Time.now) %>
 <%= p.save %>
+

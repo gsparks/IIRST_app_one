@@ -1,4 +1,9 @@
-<h1>Listing network events</h1>
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
+<h1>Current Network Settings</h1>
 
 <table>
   <tr>
@@ -10,18 +15,26 @@
     <th></th>
   </tr>
 
-<% @networks.each do |network| %>
+<% network = @networks.last %>
   <tr>
     <td><%= network.latency %></td>
     <td><%= network.jitter %></td>
     <td><%= network.date %></td>
-    <td><%= link_to 'Show', network %></td>
-    <td><%= link_to 'Edit', edit_network_path(network) %></td>
-    <td><%= link_to 'Destroy', network, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
 </table>
-
 <br />
 
-<%= link_to 'New Network', new_network_path %>
+<h1>Change Network Settings</h1>
+<% form_tag("/networks", :method => "get") do %>
+  <label for="latency">Latency (in seconds): </label>
+  <%= text_field_tag :latency %>
+  <br>
+  <label for="jitter">Jitter (true or false): </label>
+  <%= text_field_tag :jitter %>
+  <br>
+ <%= submit_tag "Submit" %>
+<% end %>
+<br>
+
+<% p = Network.new(:latency => params[:latency].to_i, :jitter => params[:jitter], :date => Time.now) %>
+<% p.save %>

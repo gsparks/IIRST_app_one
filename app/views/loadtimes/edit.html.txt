@@ -1,0 +1,8 @@
+<% sleep Network.last.latency.to_i %>
+
+<h1>Editing loadtime</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @loadtime %> |
+<%= link_to 'Back', loadtimes_path %>

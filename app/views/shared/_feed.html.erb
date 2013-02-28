@@ -1,3 +1,8 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
 <% if @feed_items.any? %>
   <table class="microposts" summary="Status feed">
     <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
