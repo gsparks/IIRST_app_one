@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @usersimulation.status %>
+</p>
+
+<p>
+  <b>Interval:</b>
+  <%= @usersimulation.interval %>
+</p>
+
+<p>
+  <b>Numsims:</b>
+  <%= @usersimulation.numsims %>
+</p>
+
+
+<%= link_to 'Edit', edit_usersimulation_path(@usersimulation) %> |
+<%= link_to 'Back', usersimulations_path %>

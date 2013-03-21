@@ -1,0 +1,44 @@
+<% if Network.last.jitter.to_s == "true" %>
+  <% sleep rand(Network.last.latency.to_i) %>
+<% else sleep Network.last.latency.to_i %>
+<% end %>
+
+<h1>Current UserSim Settings</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Interval</th>
+    <th>Numsims</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% x = @usersimulations.last %>
+  <tr>
+    <td><%= x.status %></td>
+    <td><%= x.interval %></td>
+    <td><%= x.numsims %></td>
+  </tr>
+</table>
+<br />
+
+<h1>Change User Simulation Settings</h1>
+<% form_tag("/usersimulations", :method => "get") do %>
+  <label for="status">Status (true or false): </label>
+  <%= text_field_tag :status %>
+  <br>
+  <label for="interval">Interval (seconds): </label>
+  <%= text_field_tag :interval %>
+  <br>
+  <label for="numsims">Numsims (how many users to emulate): </label>
+  <%= text_field_tag :numsims %>
+  <br>
+ <%= submit_tag "Submit" %>
+<% end %>
+<br>
+
+<% p = Usersimulation.new(:status => params[:status].to_i, :interval => params[:interval], :numsims => params[:numsims]) %>
+<% p.save %>
+
