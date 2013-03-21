@@ -66,13 +66,24 @@ This is the sample application for [*Ruby on Rails Tutorial: Learn Rails by Exam
 
 3.  $ rake db:migrate
 
-4.  Navigate to localhost:3000/networks.  A page should exist that attempts to list network changes.
+4.  Navigate to localhost:3000/networks.  A page should exist.
+    
+# Section III Installing the User simulation functionality
 
-5.  Place this code in application.rb within the config folder…
-
-	# Network Variables
-    	$latency = 0
-    	$jitter = 'f'
-    	
 Terminal command to kick off Selenim test...
 java -jar selenium-server-standalone-2.31.0.jar -htmlSuite "*googlechrome" http://localhost:3000 mytestsuite.html results.html
+
+1.  $ rails generate scaffold Usersimulation status:string interval:integer numsims:integer
+
+2.  Make sure usersimulation.rb located in app/models/usersimulation.rb looks like…
+
+	class Usersimulation < ActiveRecord::Base
+		attr_accessible :latency, :jitter, :date
+		validates :status, :presence => true
+   		validates :interval, :presence => true
+   		validates :numsims, :presence => true
+	end
+
+3.  $ rake db:migrate
+
+4.  Navigate to localhost:3000/usersimulations.  A page should exist.
