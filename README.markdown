@@ -73,3 +73,6 @@ This is the sample application for [*Ruby on Rails Tutorial: Learn Rails by Exam
 	# Network Variables
     	$latency = 0
     	$jitter = 'f'
+    	
+Terminal command to kick off Selenim test...
+java -jar selenium-server-standalone-2.31.0.jar -htmlSuite "*googlechrome" http://localhost:3000 mytestsuite.html results.html
