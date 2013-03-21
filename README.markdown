@@ -66,9 +66,7 @@ This is the sample application for [*Ruby on Rails Tutorial: Learn Rails by Exam
 
 3.  $ rake db:migrate
 
-4.  Navigate to localhost:3000/networks.  A page should exist that attempts to list network changes.
-
-5.  Place this code in application.rb within the config folder…
+4.  Navigate to localhost:3000/networks.  A page should exist.
     
 # Section III Installing the User simulation functionality
 
