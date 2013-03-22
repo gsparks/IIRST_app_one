@@ -39,6 +39,6 @@
 <% end %>
 <br>
 
-<% p = Usersimulation.new(:status => params[:status].to_i, :interval => params[:interval], :numsims => params[:numsims]) %>
+<% p = Usersimulation.new(:status => params[:status].to_s, :interval => params[:interval], :numsims => params[:numsims]) %>
 <% p.save %>
 

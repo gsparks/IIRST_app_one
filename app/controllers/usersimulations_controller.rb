@@ -1,3 +1,6 @@
+require 'rufus/scheduler'
+require 'parallel'
+
 class UsersimulationsController < ApplicationController
   # GET /usersimulations
   # GET /usersimulations.xml
@@ -7,6 +10,26 @@ class UsersimulationsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @usersimulations }
+      
+      scheduler = Rufus::Scheduler.start_new
+      
+      if @usersimulations.last.status.to_s == "true"
+        x = @usersimulations.last.interval
+        l = 0
+        scheduler.every "#{x}s" do |job|
+          if l >= 3
+            puts "Stress testing finished running"
+            job.unschedule
+          else
+            l += 1
+            puts "Stress testing currently running"
+            numsims = @usersimulations.last.numsims
+            Parallel.each(1..numsims, :in_processes => numsims) do
+              `java -jar selenium-server-standalone-2.31.0.jar -htmlSuite "*googlechrome" http://localhost:3000 mytestsuite.html results.html`
+            end
+		  end  		  
+  		end
+	  end
     end
   end
 
