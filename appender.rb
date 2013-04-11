@@ -2,21 +2,35 @@ class Appender
 
 attr_reader :code, :destination_type, :path
 
-    @directories               = Hash.new
-    @directories["controller"] = "./app/controllers"
-    @directories["model"]      = "./app/models"
-    @directories["view"]       = "./app/views"
-
-    def initialize(destination_type, code)
-      @destination_type = destination_type
-      @code             = code
-      @directories[@destination_type] ? @path = @directories[@destination_type] : @path = nil
-      insert()
+    def initialize(path, code, mode, erase_all)
+      @path = path
+      @code = code
+      insert(mode, erase_all)
     end
 
-    def insert(where)
-      if (@path)
-        File.open(@path, where) { |file| file.puts @code }
+    def insert(mode, start_over)
+      File.new(@path, "w") if start_over
+      if (mode == 'bottom')
+        if (@path)
+          File.open(@path, 'a+') { |file| file.puts @code }
+        end
+      elsif (mode == 'top')
+        if (@path)
+          newfile = File.new(@path + ".new","w")
+          newfile.puts @code
+          
+          oldfile = File.open(@path, "r+")
+          oldfile.each_line { |line| newfile.puts line}
+          
+          oldfile.close()
+          newfile.close()
+          
+          File.rename(@path + ".new", @path)
+        end
       end
     end
-end
+  end
+  
+
+
+appender = Appender.new("./app/views/layouts/application.html.erb", "the cake is a lie", 'top', false)
