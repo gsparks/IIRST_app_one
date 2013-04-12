@@ -1,8 +1,11 @@
+<% if Network.last != nil %>
 <% if Network.last.jitter.to_s == "true" %>
   <% sleep rand(Network.last.latency.to_i) %>
 <% else sleep Network.last.latency.to_i %>
 <% end %>
+<% end %>
 
+<% if @usersimulations.last != nil %>
 <h1>Current UserSim Settings</h1>
 
 <table>
@@ -23,6 +26,8 @@
   </tr>
 </table>
 <br />
+
+<% end %>
 
 <h1>Change User Simulation Settings</h1>
 <% form_tag("/usersimulations", :method => "get") do %>
