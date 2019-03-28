@@ -1,11 +1,3 @@
-# Ruby on Rails Tutorial: sample application
-
-This is the sample application for [*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/) by [Michael Hartl](http://michaelhartl.com/).
-
-#################################################################
-# Instructions for installing IIRST
-#################################################################
-
 # Section I => Installing the loadtime functionality
 
 1.  $ rails generate scaffold Loadtime loadtime:float page:string date:string
